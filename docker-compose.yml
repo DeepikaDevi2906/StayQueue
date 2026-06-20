@@ -1,0 +1,68 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2911Deepika$
+      POSTGRES_DB: hotel_db
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  user-service:
+    image: user-service:latest
+    container_name: user-service
+    ports:
+      - "8001:8001"
+
+  hotel-service:
+    image: hotel-service:latest
+    container_name: hotel-service
+    ports:
+      - "8002:8002"
+    env_file:
+      - ./services/hotel-service/.env
+
+  booking-service:
+    image: booking-service:latest
+    container_name: booking-service
+    ports:
+      - "8003:8003"
+
+  api-gateway:
+    image: api-gateway:latest
+    container_name: api-gateway
+    ports:
+      - "8000:8000"
+
+  email-service:
+    image: email-service:latest
+    container_name: email-service
+
+  notification-service:
+    image: notification-service:latest
+    container_name: notification-service
+
+  analytics-consumer:
+    image: analytics-consumer:latest
+    container_name: analytics-consumer
+
+  analytics-service:
+    image: analytics-service:latest
+    container_name: analytics-service
+    ports:
+    - "8004:8004"
