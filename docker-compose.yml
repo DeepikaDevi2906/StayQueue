@@ -52,15 +52,15 @@ services:
   email-service:
     image: email-service:latest
     container_name: email-service
+    ports:
+    - "8005:8005"
 
   notification-service:
     image: notification-service:latest
     container_name: notification-service
-
-  analytics-consumer:
-    image: analytics-consumer:latest
-    container_name: analytics-consumer
-
+    ports:
+    - "8006:8006"
+  
   analytics-service:
     image: analytics-service:latest
     container_name: analytics-service

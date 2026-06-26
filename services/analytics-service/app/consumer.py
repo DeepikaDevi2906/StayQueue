@@ -69,13 +69,3 @@ def callback(ch, method, properties, body):
     finally:
         db.close()
 
-
-channel.basic_consume(
-    queue="analytics_queue",
-    on_message_callback=callback,
-    auto_ack=True
-)
-
-print("Analytics Consumer Started...")
-
-channel.start_consuming()

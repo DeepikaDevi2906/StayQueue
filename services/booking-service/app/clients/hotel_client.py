@@ -1,6 +1,6 @@
 import requests
 
-HOTEL_SERVICE_URL = "http://localhost:8002"
+HOTEL_SERVICE_URL = "http://hotel-service:8002"
 
 
 def get_room_inventory(
